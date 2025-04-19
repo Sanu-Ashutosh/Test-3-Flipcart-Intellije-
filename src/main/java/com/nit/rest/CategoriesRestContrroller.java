@@ -18,7 +18,7 @@ import com.nit.entity.Category;
 import com.nit.service.ICategorieService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/V1/categories")
 public class CategoriesRestContrroller {
 
 	@Autowired

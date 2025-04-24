@@ -56,6 +56,12 @@ public class CategoriesRestContrroller {
         service.deleteById(id);
         return new ResponseEntity<>("Delete Successful", HttpStatus.OK);
     }
+     @GetMapping("/delete1")
+    public ResponseEntity<?> deleteById1(@RequestParam Long id) {
+        System.out.println(LocalDateTime.now());
+        service.deleteById(id);
+        return new ResponseEntity<>("Delete Successful", HttpStatus.OK);
+    }
 
 
 }

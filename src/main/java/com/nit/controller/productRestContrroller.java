@@ -1,8 +1,9 @@
-package com.nit.rest;
+package com.nit.controller;
 
 import com.nit.entity.Product;
 import com.nit.model.ProductModel;
 import com.nit.service.IProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class productRestContrroller {
     private IProductService service;
 
     @PostMapping("/add")
-    public ResponseEntity<String> addAllCatgories(@RequestBody List<ProductModel> product) {
+    public ResponseEntity<String> addAllCatgories(@Valid @RequestBody List<@Valid ProductModel> product) {
 
 
         if (product != null) {

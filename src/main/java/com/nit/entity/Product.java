@@ -1,18 +1,9 @@
 package com.nit.entity;
 
-
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,20 +13,29 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "PRODUCT_DETAILS")
+@Table(name = "PRODUCT_DETAILS1")
 public class Product {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long productId;
-	
-	private String productName;
-	private Double productprice;
-	
-	@ManyToOne
-	@JoinColumn(name = "categorieID", referencedColumnName = "categoryId",nullable = false)
-	@JsonBackReference
 
-	private Category categories;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
+
+    @NotBlank(message = "Name is Required")
+    @Size(min = 4, max = 20)
+    private String productName;
+
+    @Positive
+    @NotNull
+    private Double productprice;
+
+    @Email
+    @NotBlank
+    @Column(name = "COMPANTEMAIL", unique = true)
+    private String companyEmail;
+
+    @ManyToOne
+    @JoinColumn(name = "categorieID", referencedColumnName = "categoryId", nullable = false)
+    @JsonBackReference
+    private Category categories;
 
 }

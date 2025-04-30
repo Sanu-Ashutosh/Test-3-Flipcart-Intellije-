@@ -37,27 +37,28 @@ public class CategoriesRestContrroller {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<?> getById(@RequestParam Long id) {
+    public ResponseEntity<?> getById(@RequestParam String id) {
         Category categoriesById = service.getCategoriesById(id);
         return categoriesById != null ? new ResponseEntity<>(categoriesById, HttpStatus.OK)
                 : new ResponseEntity<>("Category not found", HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<String> updateById(@RequestParam Long id, @RequestBody Category category) {
+    public ResponseEntity<String> updateById(@RequestParam String id, @RequestBody Category category) {
         Category categoriesById = service.updateCategoriesById(id, category);
         return categoriesById != null ? new ResponseEntity<>("Update Successful", HttpStatus.OK)
                 : new ResponseEntity<>("Category not found", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/delete")
-    public ResponseEntity<?> deleteById(@RequestParam Long id) {
+    public ResponseEntity<?> deleteById(@RequestParam String id) {
         System.out.println(LocalDateTime.now());
         service.deleteById(id);
         return new ResponseEntity<>("Delete Successful", HttpStatus.OK);
     }
-     @GetMapping("/delete1")
-    public ResponseEntity<?> deleteById1(@RequestParam Long id) {
+
+    @GetMapping("/delete1")
+    public ResponseEntity<?> deleteById1(@RequestParam String id) {
         System.out.println(LocalDateTime.now());
         service.deleteById(id);
         return new ResponseEntity<>("Delete Successful", HttpStatus.OK);

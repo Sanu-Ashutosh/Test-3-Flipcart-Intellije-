@@ -16,11 +16,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "CATAGORY_DETAILS1")
+@Table(name = "CATAGORY_DETAILS")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long categoryId;
+    @Column(length = 20)
+    private String categoryId;
 
     @NotBlank(message = "Name is Required")
     @Size(min = 4, max = 30)

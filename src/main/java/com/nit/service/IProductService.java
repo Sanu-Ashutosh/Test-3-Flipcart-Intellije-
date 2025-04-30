@@ -12,9 +12,9 @@ public interface IProductService {
 
     Page<Product> getAllByPage(int page);
 
-    Product getProductById(Long id);
+    Product getProductById(String id);
 
-    Product updateProductById(Long id, Product product);
+    Product updateProductById(String id, Product product);
 
-    void deleteProductById(Long id);
+    void deleteProductById(String id);
 }

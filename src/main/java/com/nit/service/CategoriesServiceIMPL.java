@@ -2,6 +2,7 @@ package com.nit.service;
 
 import com.nit.entity.Category;
 import com.nit.repository.ICategorieRepositary;
+import com.nit.utils.UUID_Generator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +18,9 @@ public class CategoriesServiceIMPL implements ICategorieService {
     @Override
     public List<Category> createCategories(List<Category> categories) {
         // TODO Auto-generated method stub
+        categories.stream().forEach(category -> {
+            category.setCategoryId(UUID_Generator.generateId());
+        });
         List<Category> saveAll = repo.saveAll(categories);
         return saveAll;
     }
@@ -30,13 +34,13 @@ public class CategoriesServiceIMPL implements ICategorieService {
     }
 
     @Override
-    public Category getCategoriesById(Long id) {
+    public Category getCategoriesById(String id) {
         // TODO Auto-generated method stub
         return repo.findById(id).get();
     }
 
     @Override
-    public Category updateCategoriesById(Long id, Category category) {
+    public Category updateCategoriesById(String id, Category category) {
         // TODO Auto-generated method stub
         Category categoriesById = getCategoriesById(id);
         categoriesById.setCategoryName(category.getCategoryName());
@@ -44,7 +48,7 @@ public class CategoriesServiceIMPL implements ICategorieService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(String id) {
         // TODO Auto-generated method stub
 
         repo.deleteById(id);

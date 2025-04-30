@@ -5,6 +5,7 @@ import com.nit.entity.Product;
 import com.nit.model.ProductModel;
 import com.nit.repository.ICategorieRepositary;
 import com.nit.repository.IProductRepositary;
+import com.nit.utils.UUID_Generator;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,7 +42,8 @@ public class ProductServiceIMPL implements IProductService {
                 // log
                 throw new IllegalArgumentException("Category with ID " + pdata.getCategoriesId() + " not found");
             }
-
+            //set ID to entity class
+            product.setProductId(UUID_Generator.generateId());
             return repo.save(product); // Save and return the product
         }).collect(Collectors.toList()); // Collect into a list
 
@@ -56,13 +58,13 @@ public class ProductServiceIMPL implements IProductService {
     }
 
     @Override
-    public Product getProductById(Long id) {
+    public Product getProductById(String id) {
         // TODO Auto-generated method stub
         return repo.findById(id).get();
     }
 
     @Override
-    public Product updateProductById(Long id, Product product) {
+    public Product updateProductById(String id, Product product) {
         // TODO Auto-generated method stub
         Product productById = getProductById(id);
         productById.setProductName(product.getProductName());
@@ -71,7 +73,7 @@ public class ProductServiceIMPL implements IProductService {
     }
 
     @Override
-    public void deleteProductById(Long id) {
+    public void deleteProductById(String id) {
         // TODO Auto-generated method stub
         repo.deleteById(id);
     }

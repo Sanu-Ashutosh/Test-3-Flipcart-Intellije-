@@ -1,24 +1,23 @@
 package com.nit.service;
 
-import java.util.List;
-
+import com.nit.entity.Category;
 import org.springframework.data.domain.Page;
 
-import com.nit.entity.Category;
+import java.util.List;
 
 public interface ICategorieService {
-	
-	 //Create multiple categories
-	 public List<Category> createCategories(List<Category> categories);
-	 
-	 //Get all categories by pagination
-	 public Page<Category> getAllCategories(int page);
-	 
-	 public Category getCategoriesById(Long id);
-	 
-	 public Category updateCategoriesById(Long id,Category category);
-	 
-	 public void deleteById(Long id);
-	 
-	 
+
+    //Create multiple categories
+    List<Category> createCategories(List<Category> categories);
+
+    //Get all categories by pagination
+    Page<Category> getAllCategories(int page);
+
+    Category getCategoriesById(String id);
+
+    Category updateCategoriesById(String id, Category category);
+
+    void deleteById(String id);
+
+
 }

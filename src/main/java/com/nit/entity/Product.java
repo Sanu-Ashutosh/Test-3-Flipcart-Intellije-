@@ -13,12 +13,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Entity
-@Table(name = "PRODUCT_DETAILS1")
+@Table(name = "PRODUCT_DETAILS")
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    @Column(length = 20)
+    private String productId;
 
     @NotBlank(message = "Name is Required")
     @Size(min = 4, max = 20)

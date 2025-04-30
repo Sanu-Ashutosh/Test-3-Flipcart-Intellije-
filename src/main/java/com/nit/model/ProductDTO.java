@@ -1,15 +1,14 @@
 package com.nit.model;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 @Data
 @Component
 public class ProductDTO {
-	
-	private Long productId;
+
+    private String productId;
     private String productName;
     private Double productPrice;
-    
+
 }

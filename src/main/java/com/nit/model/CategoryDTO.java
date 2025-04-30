@@ -1,17 +1,16 @@
 package com.nit.model;
 
-import java.util.List;
-
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
-import lombok.Data;
+import java.util.List;
 
 @Data
 @Component
 public class CategoryDTO {
-	
-	private Long categoryId;
+
+    private String categoryId;
     private String categoryName;
     private List<ProductDTO> allProduct;
-    
+
 }

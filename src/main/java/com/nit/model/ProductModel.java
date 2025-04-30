@@ -22,6 +22,6 @@ public class ProductModel {
     @Column(name = "COMPANTEMAIL", unique = true)
     private String companyEmail;
 
-    private Long categoriesId;
+    private String categoriesId;
 
 }
